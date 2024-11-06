@@ -1,4 +1,6 @@
 #include<stdlib.h>
 #include<stdio.h>
 
-void readLatinSquare(int **, char *);
+int readLatinSquare(int **, char *);
+
+void printLatinSquare(int **, int);
