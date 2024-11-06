@@ -7,22 +7,26 @@
  *  
  * @return (int)The Size of the 1d array.
  */
-int readLatinSquare(int **LatinSquare, char *fileName){
+int readLatinSquare(int ***LatinSquare, char *fileName){
     FILE *fp;                           //create the file pointer.
-    fp = fopen(fileName, "r");
+    fp = fopen(fileName,"r");
     if(fp==NULL){                       // if faild to open file.
         printf("Faild to open file.");
         return EXIT_FAILURE;
     }
     int size;                           // read the first line on the .txt file, set it as the size value.
-    fscanf(fp,"%d g\n", &size);
+    fscanf(fp,"%d \n", &size);
+
+    *LatinSquare=(int **)malloc(size*sizeof(int *));
 
     for(int i=0;i<size;i++)            // Allocate space for the 2d dynamic array.
-        LatinSquare = (int **)malloc(size*sizeof(int *));
+        (*LatinSquare)[i]=(int *)malloc(size*sizeof(int *));
 
     for(int i=0;i<size;i++)            // read the 2d array from the file.
-        for(int j=0;j<size;j++)
-            fscanf(fp,"%d",&LatinSquare[i][j]);
+        for(int j=0;j<size;j++){
+            fscanf(fp, "%d", &(*LatinSquare)[i][j]);
+            (*LatinSquare)[i][j] *= -1;
+        }
     fclose(fp);                         // close the file.
     return size;                        // return the size.
 }
@@ -34,10 +38,10 @@ int readLatinSquare(int **LatinSquare, char *fileName){
  * 
  * @return void
  */
-void printLatinSquare(int **LatinSquare, int size){
+void printLatinSquare(int ***LatinSquare, int size){
     for(int i=0;i<size;i++){
         for(int j=0;j<size;j++){
-            printf(" %d ",LatinSquare[i][j]);
+            printf(" %d ",(*LatinSquare)[i][j]);
         }
         printf("\n");
     }
