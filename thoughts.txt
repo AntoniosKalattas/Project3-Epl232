@@ -1,0 +1,21 @@
+1. stack.h -> 2. stack.c
+NODE and STACK structs
+push, pop, createStack, and freeStack functions.
+
+3. file.h -> 4. file.c
+Implement all stack-related operations,(nodes w/ game states and managing memory)
+Declare file reading & game board setup functions
+
+5. solver.h -> 6. solver.c
+Implement functions to read the game state from a file and return a 2D array w/ the board’s initial state
+Declare backtracking solver functions
+
+7. main.c
+Implement backtracking logic, including the function that uses push and pop to manage stack states.
+Track moves (push/pop count) and apply the game constraints.
+duties of main:
+1)Reads arguments and initializes the game board.
+2)Calls the solver.
+3)Outputs the board and cleanup.
+
+8. printer.c and printer.h  may not be needed to be done seperately, we ll see
