@@ -19,3 +19,46 @@ duties of main:
 3)Outputs the board and cleanup.
 
 8. printer.c and printer.h  may not be needed to be done seperately, we ll see
+
+9. videos I found useful about backtracking : https://www.youtube.com/watch?v=gBC_Fd8EE8A 
+                                              https://www.geeksforgeeks.org/backtracking-algorithms/
+
+how i recommend using backtracking in solving the latinsquare, not 100% sure just ideas:
+
+int solveLatinSquare(int **board, int n, Stack *stack) {
+    int row = -1, col = -1, found = 0; // initialize row, col, and found flag
+    for (int i = 0; i < n && !found; i++) { // loops in order to find first empty cell
+        for (int j = 0; j < n && !found; j++) {
+            if (board[i][j] == 0) { // if cell is empty
+                row = i;
+                col = j;
+                found = 1; // marks cell as found
+            }
+        }
+    }
+    if (!found) return 1; // if no empty cell, obv puzzle is solved
+
+    // tries placing each number from 1 to n in the found empty cell
+    // we will need to implement an isSade method to check whether we can add the number or not (we have the methods to check from the 1st project)
+    for (int num = 1; num <= n; num++) {
+        if (isSafe(board, n, row, col, num)) { 
+            board[row][col] = num; // places 'num' in the cell
+            push(stack, board, row, col); // pushes the current state to stack
+            pushCount++; // increases push counter
+            // printing formatting can be something like this:
+            printf("PUSH: STEP %d\n", pushCount);
+            printBoard(board, n); // prints the current state
+
+            if (solveLatinSquare(board, n, stack)) return 1; // recursive in order to solve further
+
+            // backtracks if no solution found in recursion
+            pop(stack, board, &row, &col); // pops previous state from stack
+            popCount++; // increases pop counter
+            // again printinf formatting can be smth like this
+            printf("POP: STEP %d\n", popCount);
+            printBoard(board, n); // prints the backtracked state
+        }
+        board[row][col] = 0; // resets the cell it tried to fill as empty before trying next number
+    }
+    return 0; // returns failure if no solution is possible??
+}
