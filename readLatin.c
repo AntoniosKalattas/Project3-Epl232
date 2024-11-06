@@ -39,10 +39,22 @@ int readLatinSquare(int ***LatinSquare, char *fileName){
  * @return void
  */
 void printLatinSquare(int ***LatinSquare, int size){
+    // prints top border
     for(int i=0;i<size;i++){
-        for(int j=0;j<size;j++){
-            printf(" %d ",(*LatinSquare)[i][j]);
+        printf("+-----");
+    }
+    printf("+\n");
+    // prints each row with borders
+    for(int row=0;row<size;row++) {
+        for(int col=0;col<size;col++){
+            // print each element with alignment
+            printf("| %2d  ", (*LatinSquare)[row][col]);
         }
-        printf("\n");
+        printf("|\n");
+        // prints row separator
+        for(int i=0;i<size;i++){
+            printf("+-----");
+        }
+        printf("+\n");
     }
 }
