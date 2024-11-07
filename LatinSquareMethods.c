@@ -32,7 +32,7 @@ bool isSolved(int **latinSquare, int size){
     return true;
 }
 
-/** @brief It will check if there is the same element in the same row or column
+/** @brief Checks if there is the same element in the same row or column
  * 
  * @param int Pointer to latisSquare.
  * @param int Size.
@@ -53,7 +53,7 @@ bool checkMove(int **latinSquare, int size, int value, int position){
     return true;
 }
 
-/** @brief It will insert a number in the given position in the LatinSquare.
+/** @brief Inserts a number in the given position in the LatinSquare.
  * 
  * @param int Pointer to the 2d LatinSquare.
  * @param int Position.
