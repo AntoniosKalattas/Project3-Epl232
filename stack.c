@@ -80,3 +80,34 @@ void freeStack(Stack *s, int size){
     free(s);
         
 }
+
+#ifdef DEBUG
+int main() {
+    int size = 3;
+    int **latinSquare=(int **)malloc(size*sizeof(int*));
+    for (int i=0;i<size;i++){
+        latinSquare[i]=(int *)malloc(size*sizeof(int));
+        for (int j=0;j<size;j++) 
+            latinSquare[i][j]=(i+j)%size+1;
+    }
+    printf("Initial Latin Square:\n");                      //Print the  square
+    printLatinSquare(latinSquare,size);
+    Stack *stack=(Stack *)malloc(sizeof(Stack));            //Initialize stack
+    initStack(stack);
+    push(stack,latinSquare,size,0,0);                       //Push the state of latin in to the stack
+    printf("Is stack empty? %s\n",isEmpty(stack)?"Yes":"No");// Check if stack is empty
+    Node *node = pop(stack);                                // Pop square from stack
+    if (node) {
+        printf("Popped Latin Square:\n");
+        printLatinSquare(node->square, size);
+        freeNode(node, size);                               // Free node
+    } 
+    else 
+        printf("Pop operation returned NULL\n");
+    for (int i=0;i<size;i++)                                // Free Latin square
+        free(latinSquare[i]);
+    free(latinSquare);
+    freeStack(stack, size);                                 // Free stack
+    return 0;
+}
+#endif
