@@ -5,7 +5,6 @@
 
 void solveLatinSquare(Node *node, int size, Stack *stack);
 
-
 int main(int argc, char * argv[]){
     if(argc==1){                                        // if given file is null.
         perror("Please give a file name.");
@@ -25,9 +24,9 @@ int main(int argc, char * argv[]){
 void solveLatinSquare(Node *node, int size, Stack *stack){
     static int step=1;
     //base case
-    if(isSolved(node->square, size)){
+    if(isSolved(node->square, size))
         return;
-    }
+    
     int position = findEmptySlot(node->square,size); // position that we can enter a number.
     bool found=false;
     for(int number=1;number<=size;number++){
@@ -41,11 +40,10 @@ void solveLatinSquare(Node *node, int size, Stack *stack){
             printLatinSquare(&node->square,size);               // prints the state of the latin Square.
             int lengthOfStack = stack->length;                  // get the new lengt of the stack.
             step++;
-            solveLatinSquare(stack->top,size,stack);     // recursive call.                                        
-            if(isSolved(stack->top->square, size)){              // if the recursive call back is because the puzzle is solved.
-                printf("we did it!\n");
+            solveLatinSquare(stack->top,size,stack);            // recursive call.                                        
+            if(isSolved(stack->top->square, size))              // if the recursive call back is because the puzzle is solved.
                 return;
-            }
+            
             else{
                 found=false;
                 pop(stack);
@@ -56,7 +54,6 @@ void solveLatinSquare(Node *node, int size, Stack *stack){
         }
     }
     if(!found){
-        pop(stack);
         return;
     }
 }
