@@ -1,6 +1,7 @@
 #include<stdlib.h>
 #include<stdbool.h>
 #include<string.h>
+#include<stdio.h>
 
 typedef struct node {
     int **square;
@@ -23,4 +24,6 @@ void push(Stack *stack, int **latinSquare, int size, int row, int col);
 
 bool isEmpty(Stack *);
 
-//void freeStack(Stack *s);
+void freeNode(Node *node, int size);
+
+void freeStack(Stack *s, int size);
