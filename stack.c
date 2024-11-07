@@ -14,13 +14,13 @@ Node* pop(Stack *stack) {
     return node;
 }
 void push(Stack *stack, int **latinSquare, int size, int row, int col) {
-    // Allocate a new node
+    // allocates a new node
     Node *node = (Node *)malloc(sizeof(Node));
     if(!node){
         perror("fail to allocate memory for push");
         return;
     }
-    // Allocate and copy the Latin square data
+    // allocates and copy the Latin square data
     node->square = (int **)malloc(size * sizeof(int *));
     if(!node->square){
         free(node);
@@ -41,17 +41,17 @@ void push(Stack *stack, int **latinSquare, int size, int row, int col) {
         memcpy(node->square[i], latinSquare[i], size * sizeof(int));
     }
 
-    // Copy the row and column values
+    // copies the row and column values
     node->row = row;
     node->col = col;
 
-    // Set the next pointer of the new node to the current top
+    // sets the next pointer of the new node to the current top
     node->next = stack->top;
 
-    // Update the top pointer to the new node
+    // updates the top pointer to the new node
     stack->top = node;
 
-    // Increment the length of the stack
+    // increases the length of the stack
     stack->length++;
 }
 

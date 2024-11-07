@@ -1,12 +1,5 @@
 #include "LatinSquareMethods.h"
 
-/** @brief Finds and return the first empty space in the LatinSquare
- * 
- * @param int Pointer to the latinSquare.
- * @param int The size of the array.
- * 
- * @return The position of the empty slot.
- */
 int findEmptySlot(int **latinSquare, int size){
     for(int i=0;i<size;i++)
         for(int j=0;j<size;j++)
@@ -15,14 +8,6 @@ int findEmptySlot(int **latinSquare, int size){
     return -1;
 }
 
-/** @brief Checks if there is any 0's left.
- * 
- * True is no 0's can be found.
- * False if there is atleast one 0.
- * 
- * @param int Pointer to the LatinSquare.
- * @param int Size of the 2d array.
- */
 bool isSolved(int **latinSquare, int size){
     for(int i=0;i<size;i++)
         for(int j=0;j<size;j++)
@@ -32,33 +17,20 @@ bool isSolved(int **latinSquare, int size){
     return true;
 }
 
-/** @brief Checks if there is the same element in the same row or column
- * 
- * @param int Pointer to latisSquare.
- * @param int Size.
- * @param int Input value.
- * @param int position,.
- */
 bool checkMove(int **latinSquare, int size, int value, int position){
     int x=(position)%size;
     int y =(position)/size;
-    // Check row
+    // checks row
     for(int i=0;i<size;i++)
         if(abs(latinSquare[y][i])==value)
             return false;
-    // Check column
+    // checks column
     for(int i=0;i<size;i++)
         if(abs(latinSquare[i][x])==value)
             return false;
     return true;
 }
 
-/** @brief Inserts a number in the given position in the LatinSquare.
- * 
- * @param int Pointer to the 2d LatinSquare.
- * @param int Position.
- * @param int value.
- */
 void insertNumber(int ***latinSquare, int size, int position, int value) {
     int row = (position) / size;
     int col = (position) % size;
@@ -68,33 +40,33 @@ void insertNumber(int ***latinSquare, int size, int position, int value) {
 #ifdef DEBUG
 int main(){
     int size=3;
-    int **latinSquare=(int **)malloc(size*sizeof(int *));   // Initialize a sample Latin square with some empty slots (0 represents empty)
+    int **latinSquare=(int **)malloc(size*sizeof(int *));   // initializes a sample Latin square with some empty slots (0 represents empty)
     for(int i=0;i<size;i++){
         latinSquare[i]=(int *)malloc(size*sizeof(int));
         for(int j=0;j<size;j++)
             latinSquare[i][j]=(i+j)%size+1;
     }
 
-    latinSquare[0][0]=0;                                    // make the first slot to be 0, to chekc the findEmpty.
+    latinSquare[0][0]=0;                                    // makes the first slot to be 0, to check the findEmpty.
 
     printf("Initial Latin Square:\n");
-    int emptySlot=findEmptySlot(latinSquare,size);          // Test findEmptySlot
+    int emptySlot=findEmptySlot(latinSquare,size);          // tests findEmptySlot
     if (emptySlot!=-1)
         printf("First empty slot found at position: %d (row%d,column %d)\n",emptySlot,emptySlot/size,emptySlot%size);
     else
         printf("No empty slot found.\n");
-    bool solved=isSolved(latinSquare, size);                // Test isSolved
+    bool solved=isSolved(latinSquare, size);                // tests isSolved
     printf("Is the Latin square solved? %s\n",solved?"Yes":"No");
-    int testValue=2;                                        // Test checkMove
+    int testValue=2;                                        // tests checkMove
     bool moveValid = checkMove(latinSquare, size, testValue, emptySlot);
     printf("Is it valid to insert %d at position %d? %s\n",testValue,emptySlot,moveValid?"Yes":"No");
-    if(moveValid){                                        // Test insertNumber
+    if(moveValid){                                          // tests insertNumber
         printf("Inserting %d at position %d\n",testValue,emptySlot);
         insertNumber(&latinSquare,size,emptySlot,testValue);
     } 
     else
         printf("Invalid move. Cannot insert %d at position %d.\n",testValue,emptySlot);
-    for(int i=0;i<size;i++)                        // Clean up allocated memory
+    for(int i=0;i<size;i++)                                 // cleans up allocated memory
         free(latinSquare[i]);
     free(latinSquare);
     return 0;

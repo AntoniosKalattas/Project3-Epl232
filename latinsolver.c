@@ -24,7 +24,7 @@ void initBackTrackingCounters(BackTrackingCounters *counters);
 
 /** @brief solves the given LatinSquare
  * 
- * Using recursion and backtracking it solves the latinSquare by moving
+ * Solves the latinSquare, using recursion and backtracking by moving
  * forward if the algorithm finds a number to place on the 
  * first empty slot. If it cannot, it backtracks to the previous empty slot
  * and tries to find a new value to assign there
