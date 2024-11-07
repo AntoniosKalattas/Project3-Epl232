@@ -31,7 +31,7 @@ int readLatinSquare(int ***LatinSquare, char *fileName){
     return size;                        // return the size.
 }
 
-/** @brief It will print the latinSquare, used for debug perposes.
+/** @brief It will print the latinSquare.
  * 
  * @param int Pointer to the LatinSquare 2d array.
  * @param int Size of the array.
@@ -61,3 +61,21 @@ void printLatinSquare(int ***LatinSquare, int size){
         printf("+\n");
     }
 }
+
+#ifdef DEBUG
+int main() {
+    int **latinSquare;                                  // Pointer for 2D Latin square.
+    char *fileName ="latin_square.txt";                 // Name of debug file to read from.
+    int size =readLatinSquare(&latinSquare, fileName);  // Read the Latin from file
+    if(size==EXIT_FAILURE){                             // if the size is 1.
+        printf("Error reading the Latin square.\n");
+        return EXIT_FAILURE;
+    }
+    printf("Latin Square of size %d:\n",size);          // Print the Latin square size.
+    printLatinSquare(&latinSquare, size);               // Print the state of square.
+    for (int i=0;i<size;i++)                            // Free the allocated memory for Latin square
+        free(latinSquare[i]);
+    free(latinSquare);
+    return EXIT_SUCCESS;
+}
+#endif
