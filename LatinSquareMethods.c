@@ -44,11 +44,11 @@ bool checkMove(int **latinSquare, int size, int value, int position){
     int y =(position)/size;
     // Check row
     for(int i=0;i<size;i++)
-        if(latinSquare[y][i]==value)
+        if(abs(latinSquare[y][i])==value)
             return false;
     // Check column
     for(int i=0;i<size;i++)
-        if(latinSquare[i][x]==value)
+        if(abs(latinSquare[i][x])==value)
             return false;
     return true;
 }

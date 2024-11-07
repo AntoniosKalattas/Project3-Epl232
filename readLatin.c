@@ -25,7 +25,7 @@ int readLatinSquare(int ***LatinSquare, char *fileName){
     for(int i=0;i<size;i++)            // read the 2d array from the file.
         for(int j=0;j<size;j++){
             fscanf(fp, "%d", &(*LatinSquare)[i][j]);
-            (*LatinSquare)[i][j] *= -1;
+            //(*LatinSquare)[i][j] *= -1;
         }
     fclose(fp);                         // close the file.
     return size;                        // return the size.
@@ -48,7 +48,10 @@ void printLatinSquare(int ***LatinSquare, int size){
     for(int row=0;row<size;row++) {
         for(int col=0;col<size;col++){
             // print each element with alignment
-            printf("| %2d  ", (*LatinSquare)[row][col]);
+            if((*LatinSquare)[row][col]>=0)
+                printf("| %2d  ", (*LatinSquare)[row][col]);
+            else
+                printf("| (%d) ", abs((*LatinSquare)[row][col]));
         }
         printf("|\n");
         // prints row separator

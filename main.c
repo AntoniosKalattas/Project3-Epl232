@@ -3,7 +3,7 @@
 #include "stack.h"
 #include  <time.h>
 
-void solveLatinSquare(Node *node, int size, Stack *stack, int step);
+void solveLatinSquare(Node *node, int size, Stack *stack);
 
 
 int main(int argc, char * argv[]){
@@ -19,10 +19,11 @@ int main(int argc, char * argv[]){
     push(stack,latinSquare,size,0,0);                        // push the very first state of the latin square.
 
 
-    solveLatinSquare(stack->top, size, stack,1);
+    solveLatinSquare(stack->top, size, stack);
 }
 
-void solveLatinSquare(Node *node, int size, Stack *stack,int step){
+void solveLatinSquare(Node *node, int size, Stack *stack){
+    static int step=1;
     //base case
     if(isSolved(node->square, size)){
         return;
@@ -34,31 +35,28 @@ void solveLatinSquare(Node *node, int size, Stack *stack,int step){
             found=true;
             int row =(position)%size;                       
             int col =(position)/size;
-            insertNumber(&node->square,size,position,number);     // insert the number in the latinSquare.
-            push(stack,node->square,size,row,col);                           // push the new state of the latinSquare.
-            printf("PUSH: STEP %d\n", step);
-            printLatinSquare(&node->square,size);
-            int lengthOfStack = stack->length;
-            solveLatinSquare(stack->top,size,stack,++step);
-            pop(stack);
-            printf("size fo stack is %d", stack->length);
-            printf("current stack head is :\n");
-            printLatinSquare(&stack->top->square,size);
-            found=false;
-            printf("back \n");
-            printLatinSquare(&stack->top->square,size);   
-            if(stack->length==lengthOfStack){
-                printf("nnnnn back \n");
-                if(isSolved(node->square, size)){
-                    return;
-                }
+            insertNumber(&node->square,size,position,number);   // insert the number in the latinSquare.
+            push(stack,node->square,size,row,col);              // push the new state of the latinSquare.
+            printf("PUSH: STEP %d\n", step);                    //
+            printLatinSquare(&node->square,size);               // prints the state of the latin Square.
+            int lengthOfStack = stack->length;                  // get the new lengt of the stack.
+            step++;
+            solveLatinSquare(stack->top,size,stack);     // recursive call.                                        
+            if(isSolved(stack->top->square, size)){              // if the recursive call back is because the puzzle is solved.
+                printf("we did it!\n");
+                return;
+            }
+            else{
+                found=false;
+                pop(stack);
                 printf("POP: STEP %d\n", step);
-                printLatinSquare(&node->square,size);   
+                printLatinSquare(&stack->top->square,size);
                 step++;
             }
         }
     }
     if(!found){
+        pop(stack);
         return;
     }
 }
