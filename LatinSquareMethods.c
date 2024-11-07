@@ -74,22 +74,23 @@ int main(){
         for(int j=0;j<size;j++)
             latinSquare[i][j]=(i+j)%size+1;
     }
+
+    latinSquare[0][0]=0;                                    // make the first slot to be 0, to chekc the findEmpty.
+
     printf("Initial Latin Square:\n");
-    printLatinSquare(latinSquare,size);
-    int emptySlot=findEmptySlot(latinSquare,size);       // Test findEmptySlot
+    int emptySlot=findEmptySlot(latinSquare,size);          // Test findEmptySlot
     if (emptySlot!=-1)
-        printf("First empty slot found at position: %d (row %d, column %d)\n",emptySlot,emptySlot/size,emptySlot%size);
+        printf("First empty slot found at position: %d (row%d,column %d)\n",emptySlot,emptySlot/size,emptySlot%size);
     else
         printf("No empty slot found.\n");
-    bool solved = isSolved(latinSquare, size);              // Test isSolved
+    bool solved=isSolved(latinSquare, size);                // Test isSolved
     printf("Is the Latin square solved? %s\n",solved?"Yes":"No");
-    int testValue = 2;                                      // Test checkMove
+    int testValue=2;                                        // Test checkMove
     bool moveValid = checkMove(latinSquare, size, testValue, emptySlot);
     printf("Is it valid to insert %d at position %d? %s\n",testValue,emptySlot,moveValid?"Yes":"No");
     if(moveValid){                                        // Test insertNumber
         printf("Inserting %d at position %d\n",testValue,emptySlot);
         insertNumber(&latinSquare,size,emptySlot,testValue);
-        printLatinSquare(latinSquare,size);
     } 
     else
         printf("Invalid move. Cannot insert %d at position %d.\n",testValue,emptySlot);
