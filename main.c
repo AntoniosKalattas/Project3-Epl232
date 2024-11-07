@@ -64,8 +64,15 @@ int main(int argc, char * argv[]){
 
     solveLatinSquare(stack->top, size, stack, counters);// solves the latinSquare
     printf("PUSH NUM: %d\n",counters->pushes);
-    printf("POP NUM: %d",counters->pops); 
-    freeStack(stack, size);
+    printf("POP NUM: %d\n",counters->pops); 
+
+    freeStack(stack, size);                             // free the stack in total.
+    for(int i=0;i<size;i++){                            // free the each row of the first latinSquare we read.
+        free(latinSquare[i]);                           
+    }
+    free(latinSquare);                                  // free the latinSquare.
+    free(counters);                                     // free the struct counters.
+    return 0;                   
 }
 
 void solveLatinSquare(Node *node, int size, Stack *stack, BackTrackingCounters *counter){
