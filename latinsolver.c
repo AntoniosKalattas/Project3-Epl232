@@ -1,7 +1,6 @@
 #include "readLatin.h"
 #include "LatinSquareMethods.h"
 #include "stack.h"
-#include  <time.h>
 
 
 /** @struct BackTrackingCounters
