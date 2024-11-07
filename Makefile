@@ -1,14 +1,36 @@
-# Makefile for compiling main.c and readLatin.c into an executable named 're'
+###############################################
+# Makefile for compiling the Latin Square Solver project
+# 'make' builds the executable file 'latinsolver'
+# 'make doxy' builds the project documentation with Doxygen
+# 'make all' builds the project and generates the documentation
+# 'make clean' removes all .o, executable, and doxy log
+###############################################
 
-CC = gcc
-CFLAGS = -Wall
-TARGET = re
-SOURCES = main.c readLatin.c LatinSquareMethods.c stack.c
+PROJ = latinsolver            # name of the executable
+CC = gcc                      # compiler
+DOXYGEN = doxygen             # doxygen binary
+CFLAGS = -std=c99 -Wall -O -Wuninitialized -Wunreachable-code -pedantic
+LFLAGS = -lm                  # additional flags for linking math library
 
-all: $(TARGET)
+# source files and object files
+C_FILES := $(wildcard *.c)    # all .c files in the directory
+OBJS := $(patsubst %.c, %.o, $(C_FILES))
 
-$(TARGET): $(SOURCES)
-	$(CC) $(CFLAGS) $(SOURCES) -o $(TARGET)
+# Build the executable from object files
+$(PROJ): $(OBJS)
+	$(CC) $(LFLAGS) -o $(PROJ) $(OBJS)
 
+# Compile each .c file into an object file
+.c.o:
+	$(CC) $(CFLAGS) -c $<
+
+# Build project and documentation
+all: $(PROJ) doxy
+
+# Generate Doxygen documentation
+doxy:
+	$(DOXYGEN) doxygen.conf &> doxygen.log
+
+# Clean up compiled files and logs
 clean:
-	rm -f $(TARGET)
+	rm -rf *.o doxygen.log html $(PROJ)
