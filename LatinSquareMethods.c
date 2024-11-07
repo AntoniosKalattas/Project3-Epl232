@@ -64,3 +64,38 @@ void insertNumber(int ***latinSquare, int size, int position, int value) {
     int col = (position) % size;
     (*latinSquare)[row][col] = value;
 }
+
+#ifdef DEBUG
+int main(){
+    int size=3;
+    int **latinSquare=(int **)malloc(size*sizeof(int *));   // Initialize a sample Latin square with some empty slots (0 represents empty)
+    for(int i=0;i<size;i++){
+        latinSquare[i]=(int *)malloc(size*sizeof(int));
+        for(int j=0;j<size;j++)
+            latinSquare[i][j]=(i+j)%size+1;
+    }
+    printf("Initial Latin Square:\n");
+    printLatinSquare(latinSquare,size);
+    int emptySlot=findEmptySlot(latinSquare,size);       // Test findEmptySlot
+    if (emptySlot!=-1)
+        printf("First empty slot found at position: %d (row %d, column %d)\n",emptySlot,emptySlot/size,emptySlot%size);
+    else
+        printf("No empty slot found.\n");
+    bool solved = isSolved(latinSquare, size);              // Test isSolved
+    printf("Is the Latin square solved? %s\n",solved?"Yes":"No");
+    int testValue = 2;                                      // Test checkMove
+    bool moveValid = checkMove(latinSquare, size, testValue, emptySlot);
+    printf("Is it valid to insert %d at position %d? %s\n",testValue,emptySlot,moveValid?"Yes":"No");
+    if(moveValid){                                        // Test insertNumber
+        printf("Inserting %d at position %d\n",testValue,emptySlot);
+        insertNumber(&latinSquare,size,emptySlot,testValue);
+        printLatinSquare(latinSquare,size);
+    } 
+    else
+        printf("Invalid move. Cannot insert %d at position %d.\n",testValue,emptySlot);
+    for(int i=0;i<size;i++)                        // Clean up allocated memory
+        free(latinSquare[i]);
+    free(latinSquare);
+    return 0;
+}
+#endif
