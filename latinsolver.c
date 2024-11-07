@@ -46,6 +46,9 @@ int main(int argc, char * argv[]){
     int **latinSquare=NULL;                             // 2d array to store the first state puzzle
 
     int size = readLatinSquare(&latinSquare, argv[1]);  // size variable
+    if(size==EXIT_FAILURE){
+        return EXIT_FAILURE;
+    }
 
     Stack *stack = (Stack *)malloc(sizeof(Stack));      // creates a stack, used for storing the states of the latinSquares
     if(stack==NULL){                                    // allocation fails

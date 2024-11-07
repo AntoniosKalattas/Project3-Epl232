@@ -16,7 +16,10 @@ int readLatinSquare(int ***LatinSquare, char *fileName){
     }
     int size;                           // reads the first line on the .txt file, sets it as the size value.
     fscanf(fp,"%d \n", &size);
-
+    if(size<2){
+        perror("Wrong size. Should be >=2");
+        return EXIT_FAILURE;
+    }
     *LatinSquare=(int **)malloc(size*sizeof(int *));
 
     for(int i=0;i<size;i++)            // allocate spaces for the 2d dynamic array.
@@ -63,10 +66,11 @@ void printLatinSquare(int ***LatinSquare, int size){
 
 #ifdef DEBUG
 int main() {
+    // IMPORTANT!!! Create a latin_square.txt file, where you will store a latinSquare.
     int **latinSquare;                                  // Pointer for 2D Latin square.
     char *fileName ="latin_square.txt";                 // Name of debug file to read from.
     int size =readLatinSquare(&latinSquare, fileName);  // Read the Latin from file
-    if(size==EXIT_FAILURE){                             // if the size is 1.
+    if(size<2){                             // if the size is 1.
         printf("Error reading the Latin square.\n");
         return EXIT_FAILURE;
     }
