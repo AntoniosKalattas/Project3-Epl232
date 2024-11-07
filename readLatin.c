@@ -51,7 +51,7 @@ void printLatinSquare(int ***LatinSquare, int size){
 
 #ifdef DEBUG
 int main() {
-    // IMPORTANT!!! Create a latin_square.txt file, where you will store a latinSquare.
+    // IMPORTANT!!! Create a latin_square.txt file, where you will store a latinSquare.  IMPORTANT!!!!!!!
     int **latinSquare;                                  // Pointer for 2D Latin square.
     char *fileName ="latin_square.txt";                 // Name of debug file to read from.
     int size =readLatinSquare(&latinSquare, fileName);  // Read the Latin from file
