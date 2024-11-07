@@ -35,5 +35,6 @@
  * 
  * ### Conclusion
  * This project showcases effective use of dynamic memory allocation and stack-based backtracking for solving Latin Square puzzles.
- * Proper memory management is ensured with valgrind-tested code. The modular structure allows for easy debugging and maintenance
+ * Proper memory management is ensured with valgrind-tested code. Furthermore, there's use of the graphviz tool that showcases how the files/functions are linked.
+ * The modular structure allows easy debugging and maintenance.
  */
