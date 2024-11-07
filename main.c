@@ -29,7 +29,7 @@ void initBackTrackingCounters(BackTrackingCounters *counters);
  * first empty slot. If it cannot, it backtracks to the previous empty slot
  * and tries to find a new value to assign there
  * 
- * @param Node Pointer currect top node of the stack.
+ * @param Node Pointer current top node of the stack.
  * @param int The size of the latinSquare.
  * @param Stack Pointer to the stack.
  * @param BackTrackingCounters Pointer to the BackTrackingCounters.
