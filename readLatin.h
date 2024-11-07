@@ -1,3 +1,10 @@
+/** @file readLatin.c
+ *  @brief Reads the latin square from file.
+ *
+ *  @author Antonios Kalattas.
+ *  @author Alexnadros Georgiou.
+ */
+
 #include<stdlib.h>
 #include<stdio.h>
 

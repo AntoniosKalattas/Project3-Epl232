@@ -1,3 +1,10 @@
+/** @file LatinSquareMethods.c
+ *  @brief Latin Square methods.
+ *
+ *  @author Antonios Kalattas.
+ *  @author Alexnadros Georgiou.
+ */
+
 #include<stdlib.h>
 #include<stdio.h>
 #include<stdbool.h>

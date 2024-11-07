@@ -1,3 +1,10 @@
+/** @file stack.c
+ *  @brief Stack, to store the states of the latin square.
+ *
+ *  @author Antonios Kalattas.
+ *  @author Alexnadros Georgiou.
+ */
+
 #include<stdlib.h>
 #include<stdbool.h>
 #include<string.h>

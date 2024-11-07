@@ -1,3 +1,12 @@
+/** @file latinsolver.c
+ *  @brief A Latin  Square solver.
+ *
+ *  Solver for latinSquare.
+ *
+ * @author Antonios Kalattas    UC1069881
+ * @author Alexandros Georgiou  UC1070298
+ */
+
 #include "readLatin.h"
 #include "LatinSquareMethods.h"
 #include "stack.h"
