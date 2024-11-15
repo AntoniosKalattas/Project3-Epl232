@@ -13,7 +13,7 @@ Node* pop(Stack *stack) {
     stack->length--;
     return node;
 }
-void push(Stack *stack, int **latinSquare, int size, int row, int col) {
+void push(Stack *stack,int **latinSquare,int size,int row,int col) {
     // allocates a new node
     Node *node = (Node *)malloc(sizeof(Node));
     if(!node){
@@ -28,29 +28,24 @@ void push(Stack *stack, int **latinSquare, int size, int row, int col) {
     }
 
     for (int i = 0; i < size; i++) {
-        node->square[i] = (int *)malloc(size * sizeof(int));
+        node->square[i] =(int *)malloc(size * sizeof(int));
         if(!node->square[i]){
             perror("Faild to Allocate space for node's latinSquare.");
-            for (int j = 0; j < i; j++) {
+            for (int j=0; j<i; j++) 
                 free(node->square[j]);
-            }
             free(node->square);
             free(node);
             return;
         }
-        memcpy(node->square[i], latinSquare[i], size * sizeof(int));
+        memcpy(node->square[i],latinSquare[i],size * sizeof(int));
     }
-
     // copies the row and column values
     node->row = row;
     node->col = col;
-
     // sets the next pointer of the new node to the current top
     node->next = stack->top;
-
     // updates the top pointer to the new node
     stack->top = node;
-
     // increases the length of the stack
     stack->length++;
 }
@@ -70,7 +65,7 @@ void freeNode(Node *node, int size){
     return;
 }
 
-void freeStack(Stack *s, int size){
+void freeStack(Stack *s,int size){
     if(!s)
         return;
     while(!isEmpty(s)){

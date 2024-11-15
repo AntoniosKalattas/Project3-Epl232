@@ -11,7 +11,6 @@
 #include "LatinSquareMethods.h"
 #include "stack.h"
 
-
 /** @struct BackTrackingCounters
  * 
  * struct that keeps track, on the counters, such
@@ -44,16 +43,16 @@ void initBackTrackingCounters(BackTrackingCounters *counters);
  * 
  * @return void.
  */
-void solveLatinSquare(Node *node, int size, Stack *stack, BackTrackingCounters *);
+void solveLatinSquare(Node *node,int size,Stack *stack,BackTrackingCounters *);
 
-int main(int argc, char * argv[]){
+int main(int argc,char * argv[]){
     if(argc==1){                                        // file's null.
         perror("Please give a file name.");
         return EXIT_FAILURE;
     }
     int **latinSquare=NULL;                             // 2d array to store the first state puzzle
 
-    int size = readLatinSquare(&latinSquare, argv[1]);  // size variable
+    int size = readLatinSquare(&latinSquare,argv[1]);  // size variable
     if(size==EXIT_FAILURE){
         return EXIT_FAILURE;
     }
@@ -73,7 +72,7 @@ int main(int argc, char * argv[]){
     }
     initBackTrackingCounters(counters);                 // initializes the BackTrackingCounters
 
-    solveLatinSquare(stack->top, size, stack, counters);// solves the latinSquare
+    solveLatinSquare(stack->top,size,stack,counters);// solves the latinSquare
     if(!isSolved(stack->top->square,size)){
         printf("Sudoku is unsolvable");
         return 0;
@@ -81,7 +80,7 @@ int main(int argc, char * argv[]){
     printf("PUSH NUM: %d\n",counters->pushes);
     printf("POP NUM: %d\n",counters->pops); 
 
-    freeStack(stack, size);                             // free the stack in total.
+    freeStack(stack,size);                             // free the stack in total.
     for(int i=0;i<size;i++){                            // free the each row of the first latinSquare we read.
         free(latinSquare[i]);                           
     }
@@ -90,9 +89,9 @@ int main(int argc, char * argv[]){
     return 0;                   
 }
 
-void solveLatinSquare(Node *node, int size, Stack *stack, BackTrackingCounters *counter){
+void solveLatinSquare(Node *node,int size,Stack *stack,BackTrackingCounters *counter){
     //base case
-    if(isSolved(node->square, size))
+    if(isSolved(node->square,size))
         return;
     
     int position = findEmptySlot(node->square,size);        // position that we can enter a number (the empty spot)
@@ -122,9 +121,8 @@ void solveLatinSquare(Node *node, int size, Stack *stack, BackTrackingCounters *
             }
         }
     }
-    if(!found){                                                 // no number found for that slot; backtracks to previous state.
+    if(!found)                                                 // no number found for that slot; backtracks to previous state.
         return;
-    }
 }
 
 void initBackTrackingCounters(BackTrackingCounters *counters){

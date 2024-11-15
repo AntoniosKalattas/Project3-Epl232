@@ -1,6 +1,6 @@
 #include "readLatin.h"
 
-int readLatinSquare(int ***LatinSquare, char *fileName){
+int readLatinSquare(int ***LatinSquare,char *fileName){
     FILE *fp;                           // creates the file pointer
     fp = fopen(fileName,"r");
 
@@ -31,11 +31,10 @@ int readLatinSquare(int ***LatinSquare, char *fileName){
     fclose(fp);                         // closes the file
     return size;                        // returns the size
 }
-void printLatinSquare(int ***LatinSquare, int size){
+void printLatinSquare(int ***LatinSquare,int size){
     // prints top border
-    for(int i=0;i<size;i++){
+    for(int i=0;i<size;i++)
         printf("+-----");
-    }
     printf("+\n");
     // prints each row with borders
     for(int row=0;row<size;row++) {
@@ -48,9 +47,8 @@ void printLatinSquare(int ***LatinSquare, int size){
         }
         printf("|\n");
         // prints row separator
-        for(int i=0;i<size;i++){
+        for(int i=0;i<size;i++)
             printf("+-----");
-        }
         printf("+\n");
     }
 }

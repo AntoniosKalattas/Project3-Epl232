@@ -2,7 +2,7 @@
  *  @brief Reads the latin square from file.
  *
  *  @author Antonios Kalattas.
- *  @author Alexnadros Georgiou.
+ *  @author Alexandros Georgiou.
  */
 
 #include<stdlib.h>
@@ -18,7 +18,7 @@
  * @param filename Name of the file containing the Latin square data
  * @return int Size of the Latin square
  */
-int readLatinSquare(int ***, char *);
+int readLatinSquare(int ***,char *);
 
 /**
  * @brief prints the Latin square in a formatted layout
@@ -28,4 +28,4 @@ int readLatinSquare(int ***, char *);
  * @param latinSquare Pointer to a 2D array representing the Latin square
  * @param size Size of the Latin square (n x n)
  */
-void printLatinSquare(int ***, int);
+void printLatinSquare(int ***,int);

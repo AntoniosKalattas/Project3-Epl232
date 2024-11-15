@@ -1,6 +1,6 @@
 #include "LatinSquareMethods.h"
 
-int findEmptySlot(int **latinSquare, int size){
+int findEmptySlot(int **latinSquare,int size){
     for(int i=0;i<size;i++)
         for(int j=0;j<size;j++)
             if(latinSquare[i][j]==0)
@@ -8,16 +8,15 @@ int findEmptySlot(int **latinSquare, int size){
     return -1;
 }
 
-bool isSolved(int **latinSquare, int size){
+bool isSolved(int **latinSquare,int size){
     for(int i=0;i<size;i++)
         for(int j=0;j<size;j++)
-            if(latinSquare[i][j]==0){
+            if(latinSquare[i][j]==0)
                 return false;
-            }
     return true;
 }
 
-bool checkMove(int **latinSquare, int size, int value, int position){
+bool checkMove(int **latinSquare,int size,int value,int position){
     int x=(position)%size;
     int y =(position)/size;
     // checks row
@@ -31,10 +30,10 @@ bool checkMove(int **latinSquare, int size, int value, int position){
     return true;
 }
 
-void insertNumber(int ***latinSquare, int size, int position, int value) {
-    int row = (position) / size;
-    int col = (position) % size;
-    (*latinSquare)[row][col] = value;
+void insertNumber(int ***latinSquare,int size,int position,int value) {
+    int row = (position)/size;
+    int col = (position)%size;
+    (*latinSquare)[row][col]=value;
 }
 
 #ifdef DEBUG

@@ -2,7 +2,7 @@
  *  @brief Stack, to store the states of the latin square.
  *
  *  @author Antonios Kalattas.
- *  @author Alexnadros Georgiou.
+ *  @author Alexandros Georgiou.
  */
 
 #include<stdlib.h>
@@ -55,7 +55,7 @@ Node* pop(Stack *stack);
  * @param row Row index where the number was placed
  * @param col Column index where the number was placed
  */
-void push(Stack *stack, int **latinSquare, int size, int row, int col);
+void push(Stack *stack,int **latinSquare,int size,int row,int col);
 
 /**
  * @brief checks if the stack is empty
@@ -71,7 +71,7 @@ bool isEmpty(Stack *s);
  * @param node Pointer to the node to free
  * @param size Size of the Latin square (n x n) in the node
  */
-void freeNode(Node *node, int size);
+void freeNode(Node *node,int size);
 
 /**
  * @brief frees all nodes in the stack and releases allocated memory
@@ -79,4 +79,4 @@ void freeNode(Node *node, int size);
  * @param s Pointer to the stack
  * @param size Size of the Latin square in each node of the stack
  */
-void freeStack(Stack *s, int size);
+void freeStack(Stack *s,int size);

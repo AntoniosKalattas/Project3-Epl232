@@ -2,13 +2,11 @@
  *  @brief Latin Square methods.
  *
  *  @author Antonios Kalattas.
- *  @author Alexnadros Georgiou.
+ *  @author Alexandros Georgiou.
  */
-
 #include<stdlib.h>
 #include<stdio.h>
 #include<stdbool.h>
-
 
 /** @brief finds and returns the first empty space in the LatinSquare
  * 
@@ -43,7 +41,7 @@ bool isSolved(int **,int);
  * @return true Number can be placed at the specified position without violating any rules
  * @return false Number at the specified position violates a rule
  */
-bool checkMove(int **latinSquare, int size, int value, int position);
+bool checkMove(int **latinSquare,int size,int value,int position);
 
 /**
  * @brief inserts a number at a specific position in the Latin square
@@ -55,5 +53,5 @@ bool checkMove(int **latinSquare, int size, int value, int position);
  * @param position Where the number will be placed
  * @param value Number to place at the specified position
  */
-void insertNumber(int ***latinSquare, int size, int position, int value);
+void insertNumber(int ***latinSquare,int size,int position,int value);
 
