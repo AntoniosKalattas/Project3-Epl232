@@ -17,7 +17,7 @@ void push(Stack *stack,int **latinSquare,int size,int row,int col) {
     // allocates a new node
     Node *node = (Node *)malloc(sizeof(Node));
     if(!node){
-        perror("fail to allocate memory for push");
+        perror("Failed to allocate memory for push");
         return;
     }
     // allocates and copy the Latin square data
@@ -27,10 +27,10 @@ void push(Stack *stack,int **latinSquare,int size,int row,int col) {
         return;
     }
 
-    for (int i = 0; i < size; i++) {
+    for (int i=0; i<size; i++) {
         node->square[i] =(int *)malloc(size * sizeof(int));
         if(!node->square[i]){
-            perror("Faild to Allocate space for node's latinSquare.");
+            perror("Failed to Allocate space for node's latinSquare.");
             for (int j=0; j<i; j++) 
                 free(node->square[j]);
             free(node->square);
