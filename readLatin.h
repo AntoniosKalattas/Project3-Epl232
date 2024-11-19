@@ -1,5 +1,5 @@
 /** @file readLatin.c
- *  @brief Reads the latin square from file.
+ *  @brief Reads the latin square from file and prints it in the corresponding grid form.
  *
  *  @author Antonios Kalattas.
  *  @author Alexandros Georgiou.

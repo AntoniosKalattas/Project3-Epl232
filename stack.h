@@ -1,5 +1,5 @@
 /** @file stack.c
- *  @brief Stack, to store the states of the latin square.
+ *  @brief Stack; to store the different states of the latin square.
  *
  *  @author Antonios Kalattas.
  *  @author Alexandros Georgiou.
