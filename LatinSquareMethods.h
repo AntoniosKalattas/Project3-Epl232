@@ -4,6 +4,9 @@
  *  @author Antonios Kalattas.
  *  @author Alexandros Georgiou.
  */
+#ifndef LATINSQUAREMETHODS_H
+#define LATINSQUAREMETHODS_H
+
 #include<stdlib.h>
 #include<stdio.h>
 #include<stdbool.h>
@@ -55,3 +58,4 @@ bool checkMove(int **latinSquare,int size,int value,int position);
  */
 void insertNumber(int ***latinSquare,int size,int position,int value);
 
+#endif // LATINSQUAREMETHODS_H

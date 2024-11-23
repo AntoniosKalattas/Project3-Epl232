@@ -4,6 +4,8 @@
  *  @author Antonios Kalattas.
  *  @author Alexandros Georgiou.
  */
+#ifndef STACK_H    // start of include guard
+#define STACK_H    // defines the include guard
 
 #include<stdlib.h>
 #include<stdbool.h>
@@ -80,3 +82,5 @@ void freeNode(Node *node,int size);
  * @param size Size of the Latin square in each node of the stack
  */
 void freeStack(Stack *s,int size);
+
+#endif // end of include guard

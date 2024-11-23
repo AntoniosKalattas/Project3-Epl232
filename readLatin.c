@@ -1,3 +1,12 @@
+/** @file readLatin.c
+ *  @brief Reads the Latin square from a file and prints it in a formatted grid layout.
+ * 
+ *  This file implements the functions declared in readLatin.h.
+ * 
+ *  @author Antonios Kalattas
+ *  @author Alexandros Georgiou
+ */
+
 #include "readLatin.h"
 
 int readLatinSquare(int ***LatinSquare,char *fileName){
@@ -25,9 +34,8 @@ int readLatinSquare(int ***LatinSquare,char *fileName){
         (*LatinSquare)[i]=(int *)malloc(size*sizeof(int *));
 
     for(int i=0;i<size;i++)            // reads the 2d array from the file
-        for(int j=0;j<size;j++){
+        for(int j=0;j<size;j++)
             fscanf(fp, "%d", &(*LatinSquare)[i][j]);
-        }
     fclose(fp);                         // closes the file
     return size;                        // returns the size
 }
@@ -56,23 +64,23 @@ void printLatinSquare(int ***LatinSquare,int size){
 #ifdef DEBUG
 int main() {
     // IMPORTANT!!! Create a latin_square.txt file, where you will store a latinSquare.  IMPORTANT!!!!!!!
-    int **latinSquare;                                  // Pointer for 2D Latin square.
-    char *fileName ="latin_square.txt";                 // Name of debug file to read from.
+    int **latinSquare;                                  // Pointer for 2D Latin square
+    char *fileName ="latin_square.txt";                 // Name of debug file to read from
 
-    FILE *fp=NULL;                                      //  
-    fp = fopen(fileName, "r");                          // 
+    FILE *fp=NULL;                                        
+    fp = fopen(fileName, "r");                          
     if(!fp){
         perror("No latin_square.txt can be found. Please create and re-run the debug.");
         return EXIT_FAILURE;
     }
-    int size =readLatinSquare(&latinSquare, fileName);  // Read the Latin from file
-    if(size<2){                             // if the size is 1.
+    int size =readLatinSquare(&latinSquare, fileName);  // reads the Latin from file
+    if(size<2){                                         // if the size is 1
         printf("Error reading the Latin square.\n");
         return EXIT_FAILURE;
     }
-    printf("Latin Square of size %d:\n",size);          // Print the Latin square size.
-    printLatinSquare(&latinSquare, size);               // Print the state of square.
-    for (int i=0;i<size;i++)                            // Free the allocated memory for Latin square
+    printf("Latin Square of size %d:\n",size);          // prints the Latin square size
+    printLatinSquare(&latinSquare, size);               // prints the state of square
+    for (int i=0;i<size;i++)                            // frees the allocated memory for Latin square
         free(latinSquare[i]);
     free(latinSquare);
     return EXIT_SUCCESS;

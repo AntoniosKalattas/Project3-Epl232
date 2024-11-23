@@ -5,6 +5,9 @@
  *  @author Alexandros Georgiou.
  */
 
+#ifndef READ_LATIN_H
+#define READ_LATIN_H
+
 #include<stdlib.h>
 #include<stdio.h>
 
@@ -29,3 +32,5 @@ int readLatinSquare(int ***,char *);
  * @param size Size of the Latin square (n x n)
  */
 void printLatinSquare(int ***,int);
+
+#endif /* READ_LATIN_H */

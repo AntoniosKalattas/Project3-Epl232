@@ -1,3 +1,11 @@
+/** @file stack.c
+ *  @brief Implementation of the stack to store the different states of the Latin square.
+ * 
+ *  This file implements the functions declared in stack.h.
+ * 
+ * @author Antonios Kalattas
+ * @author Alexandros Georgiou
+ */
 #include "stack.h"
 
 void initStack(Stack *s){
@@ -85,19 +93,19 @@ int main() {
         for (int j=0;j<size;j++) 
             latinSquare[i][j]=(i+j)%size+1;
     }
-    Stack *stack=(Stack*)malloc(sizeof(Stack));            //Initialize stack
-    initStack(stack);
-    push(stack,latinSquare,size,0,0);                       //Push the state of latin in to the stack
-    printf("Is stack empty? %s\n",isEmpty(stack)?"Yes":"No");// Check if stack is empty
-    Node *node=pop(stack);                                  // Pop square from stack
+    Stack *stack=(Stack*)malloc(sizeof(Stack));                 // initializes stack
+    initStack(stack);   
+    push(stack,latinSquare,size,0,0);                           // pushes the state of latin in to the stack
+    printf("Is stack empty? %s\n",isEmpty(stack)?"Yes":"No");   // checks if stack is empty
+    Node *node=pop(stack);                                      // pops square from stack
     if(node)
-        freeNode(node, size);                               // Free node
+        freeNode(node, size);                                   // frees node
     else 
         printf("Pop operation returned NULL\n");
-    for (int i=0;i<size;i++)                                // Free Latin square
+    for (int i=0;i<size;i++)                                    // frees Latin square
         free(latinSquare[i]);
     free(latinSquare);
-    freeStack(stack, size);                                 // Free stack
+    freeStack(stack, size);                                     // frees stack
     return 0;
 }
 #endif

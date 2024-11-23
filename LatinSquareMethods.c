@@ -1,3 +1,11 @@
+/** @file latinsquare.c
+ *  @brief Latin Square operations.
+ *
+ * This file implements the functions declared in LatinSquareMethods.h.
+ *
+ *  @author Antonios Kalattas
+ *  @author Alexandros Georgiou
+ */
 #include "LatinSquareMethods.h"
 
 int findEmptySlot(int **latinSquare,int size){
@@ -31,8 +39,8 @@ bool checkMove(int **latinSquare,int size,int value,int position){
 }
 
 void insertNumber(int ***latinSquare,int size,int position,int value) {
-    int row = (position)/size;
-    int col = (position)%size;
+    int row =(position)/size;
+    int col =(position)%size;
     (*latinSquare)[row][col]=value;
 }
 
