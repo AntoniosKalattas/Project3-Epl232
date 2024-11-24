@@ -74,11 +74,13 @@ int main(int argc,char * argv[]){
 
     solveLatinSquare(stack->top,size,stack,counters);// solves the latinSquare
     if(!isSolved(stack->top->square,size)){
-        printf("Sudoku is unsolvable");
+        printf("LATIN SQUARE IS UNSOLVABLE!!\n");
+        printf("PUSH NUM: %d\n",counters->pushes);
+        printf("POP  NUM: %d\n",counters->pops);
         return 0;
     }
     printf("PUSH NUM: %d\n",counters->pushes);
-    printf("POP NUM: %d\n",counters->pops); 
+    printf("POP  NUM: %d\n",counters->pops); 
 
     freeStack(stack,size);                             // free the stack in total.
     for(int i=0;i<size;i++){                            // free the each row of the first latinSquare we read.
