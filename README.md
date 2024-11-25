@@ -1,7 +1,7 @@
 # Latin Square Automation Solver
 
-** author: ** Antonios Kalattas   
-** author ** Alexandros Georgiou  
+**author:** Antonios Kalattas   
+**author** Alexandros Georgiou  
  
 ### Summary
 This program is a solver for Latin Square puzzles of various sizes, employing backtracking and stack-based memory management
